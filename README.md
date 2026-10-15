@@ -6,6 +6,14 @@ The phone captures video and streams it over local Wi-Fi using IP Webcam. The la
 
 The aim is to demonstrate a working pipeline using equipment I already have, without purchasing additional hardware.
 
+## Demonstration
+
+This video shows the Android phone streaming video over local Wi-Fi
+to the laptop, where YOLOv8n runs object detection on the CPU.
+
+https://github.com/user-attachments/assets/b05f75cc-e556-49ae-9ad9-77907b8cd6ae
+
+
 ## How it works
 
 ```text
