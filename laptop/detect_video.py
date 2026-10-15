@@ -1,3 +1,5 @@
+from time import perf_counter
+
 import cv2
 from ultralytics import YOLO
 
@@ -18,6 +20,9 @@ def main():
 
         print("Detection started. Click the video window and press Q to quit.")
 
+        frame_count = 0
+        report_start = perf_counter()
+
         while True:
             success, frame = capture.read()
 
@@ -36,8 +41,22 @@ def main():
             annotated_frame = result.plot()
             cv2.imshow("Phone Camera - YOLOv8 Detection", annotated_frame)
 
-            if cv2.waitKey(1) & 0xFF == ord("q"):
+            # Process window events and check for the quit key.
+            key = cv2.waitKey(1) & 0xFF
+
+            frame_count += 1
+            elapsed = perf_counter() - report_start
+
+            if elapsed >= 5.0:
+                fps = frame_count / elapsed
+                print(f"Receiver/detection throughput: {fps:.1f} FPS")
+
+                frame_count = 0
+                report_start = perf_counter()
+
+            if key == ord("q"):
                 break
+
     finally:
         capture.release()
         cv2.destroyAllWindows()

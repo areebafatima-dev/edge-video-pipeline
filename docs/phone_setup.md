@@ -6,8 +6,11 @@
 - Camera application: IP Webcam
 
 ## Video settings
-- Received stream resolution: 1920 × 1080 pixels
-- Verification: Dimensions of a decoded frame received by OpenCV
+- Current received stream resolution: 640 × 480 pixels
+- Previous received stream resolution: 1920 × 1080 pixels
+- Verification: Dimensions of decoded frames received by OpenCV
+- The output resolution was changed in the phone's IP Webcam settings.
+- This uses the existing app; no custom Android resizing code was written.
 
 ## Network addresses
 - Server address: http://192.168.100.8:8080
@@ -25,7 +28,9 @@
 - Python successfully received and displayed the stream.
 - YOLOv8 successfully detected objects in the stream.
 - Detection appeared responsive during a manual test.
-- FPS and end-to-end latency have not yet been measured.
+- Laptop receiver/detection throughput measured at 29.6–31.7 FPS after the first reporting interval.
+- End-to-end latency has not yet been measured.
+- See performance.md for the test configuration and results.
 
 ## Implementation notes
 - The phone uses the existing IP Webcam application.
